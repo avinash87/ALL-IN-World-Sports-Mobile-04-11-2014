@@ -1,0 +1,142 @@
+.friends-list-cls{
+    background: rgba(255, 255, 255, 0.9);
+    .x-scroll-scroller{
+      padding: 0 0.75em;
+    }
+    .overlay-title-cls {
+        padding: 0em 1em;
+        background: rgba(211, 211, 211, 0.9);
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.8em;
+        line-height: 2.5;
+        position: relative;
+        .action-btn{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2.25em;
+            display: block;
+            background-repeat: no-repeat;
+            background-position: center;
+            &.closeList{
+                right: 0;
+                background-color: red;
+                background-image: url("../images/cancel-bet.png");
+            }
+            &.acceptList{
+                right: 2.5em;
+                background-color: yellowgreen;
+                background-image: url("../images/select-enable.png");
+            }
+        }
+    }
+    .friend-cls{
+        .row-cls{
+          @include st-box();
+          @include st-box-orient(horizontal);
+          @include st-box-align(center);
+        }
+        .reverse-cls{
+          @include st-box-direction(reverse, row);
+        }
+        .action-btns{
+          display: none;
+          .spacer-cls{
+            @include st-box-flex(1);
+          }
+          .accept-btn, .reject-btn{
+            padding: 0 1em;
+            line-height: 2;
+            color: white;
+      			font-size: 0.75em;
+      			border-radius: 1.5em;
+      			border: 0;
+          }
+          .accept-btn{
+            @include background-gradient($confirm-color);
+          }
+          .reject-btn{
+            @include background-gradient($alert-color);
+          }
+        }
+        &.x-item-selected{
+          .show-accept-btn{
+            &.action-btns{
+              @include st-box();
+              margin-top: 0.5em;
+            }
+          }
+        }
+        margin-top: 0.5em;
+        padding: 0.25em 0.25em 0.25em 0.25em;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid white;
+        position: relative;
+        &:last-child{
+          margin-bottom: 0.5em;
+        }
+        &:after{
+          width: 1.5em;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          content: " ";
+          position: absolute;
+          z-index: 1;
+          background-color: #f4f4f4;
+          background-size: auto 0.75em;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url("../images/select-disable.png");
+        }
+        &.x-item-selected{
+          background: rgba(227, 227, 227, 0.69);
+          &:after{
+            background-image: url("../images/select-enable.png");
+          }          
+        }
+        .thumb{
+          width: 2.5em;
+          height: 2.5em;
+          background-size: 2.5em 2.5em;
+          background-repeat: no-repeat;
+          background-position: center; 
+		  margin-right: 0.5em;	
+		  background-image : url(../images/person.png);
+		  
+        }
+        .status{
+          width: 1.5em;
+          height: 1.5em;
+          background-size: contain;
+          background-color: transparent;
+          background-repeat: no-repeat;
+          margin-right: 0.5em;
+          margin-left: 0.5em;          
+        }
+        .title{
+          font-size: 0.75em;
+          @include st-box-flex(1);
+          font-family: "opensansbold";
+        }
+    }
+    .status{
+      &.inactive{
+        background-image: url("../images/status-disable.png");
+      }
+      &.active{
+        background-image: url("../images/status-friend.png");
+      }
+    }
+    &.enemy-cls{
+      .status.active{
+        background-image: url("../images/status-enemy.png");
+      }
+    }
+    &.celeberity-cls{
+      .status.active{
+        background-image: url("../images/status-celebrity.png");
+      }
+    }
+}

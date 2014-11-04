@@ -1,0 +1,290 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+$base-color: #333;
+
+@import 'sencha-touch/default';
+$form-field-height: 2em;
+$form-thumb-size: 2em;
+$form-slider-size: 0.5em;
+@import 'sencha-touch/default/all';
+
+
+// @include icon('user');
+// @include font-face("OpenSansBold", "../fonts/OpenSans-ExtraBold.ttf");
+@include font-face("OpenSansBold", inline-font-files("OpenSans-ExtraBold.ttf", truetype));
+@include font-face("OpenSansLight", inline-font-files("OpenSans-Light.ttf", truetype));
+
+@mixin background-allin($img-url){
+  background-color: transparent;
+  background-image: url($img-url);
+  background-size: 100% 100%;
+  background-position: center;  
+}
+
+@import 'accountSetting';
+@import 'login';
+@import 'mainMenu';
+@import 'gameList';
+@import 'aboutGame';
+@import 'betPage';
+@import 'betDetail';
+@import 'profile';
+@import 'friendsList';
+@import 'profileBuyCoins';
+@import 'myBet';
+@import 'leaderBoard';
+@import 'nextDrawing';
+
+.navigation-cls.x-dataview{
+  width: 320px;
+  @include background-gradient(darken($base-color,20%), "bevel");
+  .navigation-item-cls{
+    padding: 0 0.6em;
+    line-height: 2.25;
+    border-bottom: 1px solid lighten($base-color, 50%);
+    color: #d2d2d2;
+    &.x-item-pressed{
+      @include background-gradient(lighten($base-color, 30%), "recessed");
+    }
+    &.x-item-selected{
+      @include background-gradient(lighten($base-color, 15%), "recessed");
+    }
+  }
+}
+
+.dashboard-cls{
+  .dashboard-btn-cls.x-button{
+      @include border-radius(0);
+      border:0;
+      margin: 0.35em;
+  }
+}
+
+.nav-toolbar-cls.x-toolbar {
+  background-color: rgba(white, 0.15);
+  background-image: none;
+  padding: 0;
+  border: 0;
+  .nav-btn-cls {
+    margin: 0;
+    padding: 0;
+    height: auto;    
+    @include border-radius(0);
+    border-right: 1px solid rgba(white, 0.5);
+    &:last-child{
+      border-right: 0;
+    }
+    .x-button-icon{
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      &:before{
+        content: "";
+      }
+      &.back{
+        background-image: url("../icons/back.png");
+      }
+      &.home{
+        background-image: url("../icons/home.png");
+      }
+      &.chat{
+        background-image: url("../icons/chat.png");
+      }
+      &.friends{
+        background-image: url("../icons/friends.png");
+      }
+      &.coins{
+        background-image: url("../icons/coins.png");
+      }
+      &.global{
+        background-image: url("../icons/menu.png");
+      }
+  	  &.tickets{
+        background-image: url("../icons/tickets.png");
+      }
+    }
+    .x-badge{
+        top: 0.5em;
+        right: auto;
+        left: 50%;
+        background-color: yellow;
+        background-image: none;
+        color: black;
+        border: 0;
+        font-size: 0.5em;
+        font-weight: normal;
+        font-family: OpenSansBold;
+        text-shadow: none;
+        box-shadow: none;      
+        @include border-radius(1em);
+    }
+  }
+}
+
+
+.winner-circle-cls{
+  @include background-allin("../images/winner_circle_background.jpg");
+  .title-cls{
+    font-family: "OpenSansBold";
+    text-transform: uppercase;
+    font-size: 1.25em;
+    color: #f5fd09;
+    margin: 0.5em;
+    text-shadow: none;
+  }
+  .winner-item-cls{
+      @include st-box();
+      @include st-box-orient(horizontal);
+      @include st-box-align(center);
+      margin-top: 0.5em;
+      background-color: transparent;
+      color: white;
+      padding: 0.5em;
+      text-transform: uppercase;
+      font-family: "OpenSansBold";
+      font-size: 0.75em;
+      .thumb{
+        width: 2.3em;
+        height: 2.3em;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 1em;
+		margin-left: 1em;
+      }
+      .date{
+        width: 6.25em;
+      }
+      .prizeName {
+        margin-right: 0.5em;
+        @include st-box-flex(1);
+        width: 0px;
+      }
+      .winnerName{
+        @include st-box-flex(1);
+        width: 0px;
+      }
+  }
+}
+
+.buytickets-cls{
+  @include background-allin("../images/ticket_rules_background.jpg");
+  .x-form-fieldset-title{
+    font-family: "OpenSansBold";
+    text-transform: uppercase;
+    font-size: 1.25em;
+    color: white;
+    margin: 0.5em;
+    text-shadow: none;
+  }
+  .x-form-fieldset-inner{
+    @include border-radius(0);
+    border: 0;
+    background: transparent;
+  }
+  .ticket-btn-cls{
+    @include border-radius(0);
+    background-image: none;
+    background-color: rgba(white, 0);
+    margin-top: 0.5em;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+    border: 0;
+    .x-button-icon {
+      background-position: left center;
+      background-size: contain;
+    }
+    .x-button-label{
+      color: white;
+      text-align: left;
+      font-family: "OpenSansBold";
+      text-transform: uppercase;
+      font-size: 0.65em;
+      white-space: normal;
+    }
+  }
+}
+
+.won-popup-cls{
+  @include background-allin("../images/won_popup_background.jpg");
+  .way-to-go-cls, .won-msg-cls, .earn-coins-cls{
+      font-family: "OpenSansBold";
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0.25em 0;
+  }
+  .way-to-go-cls{
+      .x-innerhtml{
+        font-size: 1.75em;
+        color: #f5fd09;
+      }
+  }
+  .won-msg-cls{
+      .x-innerhtml{
+        font-size: 1.15em;
+        color: white;
+      }
+  }
+  .earn-coins-cls{
+      .x-innerhtml{
+        font-size: 1.25em;
+        color: #d3252e;
+      }
+  }
+  .detail-btn-cls{
+    width: 12em;
+    max-width: 12em;
+    margin: auto;
+    background-color: #f5fd09;
+    background-image: none;
+    @include border-radius(1.5em);
+    .x-button-label{
+      font-family: "OpenSansBold";
+      text-transform: uppercase;
+      font-size: 1.25em;
+      color: black;
+    }
+  }
+  .close-btn-cls{
+    .x-button-label{
+      color: #bababa;
+    }
+  }
+}
+
+.drawingrules-cls{
+  @include background-allin("../images/next_drawing_background.jpg");
+  .x-form-fieldset-title{
+    font-family: "OpenSansBold";
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: white;
+    margin: 0.5em;
+    text-shadow: none;
+  }
+  .x-form-fieldset-inner{
+    @include border-radius(0);
+    border: 0;
+    background: transparent;
+  }
+  .ticket-btn-cls{
+    @include border-radius(0);
+    background-image: none;
+    background-color: rgba(white, 0);
+    margin-top: 0.5em;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+    border: 0;
+    .x-button-icon {
+      background-position: left center;
+      background-size: contain;
+    }
+    .x-button-label{
+      color: white;
+      text-align: left;
+      font-family: "OpenSansBold";
+      text-transform: uppercase;
+      font-size: 0.65em;
+      white-space: normal;
+    }
+  }
+}
